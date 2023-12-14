@@ -48,13 +48,31 @@ function FuncComp(props) {
   );
 }
 
+var classStyle = "color:red";
 class ClassComp extends React.Component {
   // 클래스 컴포넌트에서는 state라는 하나의 객체 안에 number와 date를 모두 넣는다.
   state = {
     number: this.props.initNumber,
     date: new Date().toString(),
   };
+  UNSAFE_componentWillMount() {
+    console.log("%cclass => componentWillMount", classStyle);
+  }
+  componentDidMount() {
+    console.log("%cclass => componentDidMount", classStyle);
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("%cclass => shouldComponentUpdate", classStyle);
+    return true;
+  }
+  UNSAFE_componentWillUpdate(nextProps, nextState) {
+    console.log("%cclass => componentWillUpdate", classStyle);
+  }
+  componentDidUpdate(nextProps, nextState) {
+    console.log("%cclass => componentDidUpdate", classStyle);
+  }
   render() {
+    console.log("%cclass => render", classStyle);
     return (
       <div className="container">
         <h2>class style component</h2>
